@@ -1,0 +1,40 @@
+body {
+    background-color: #99ffce;
+}
+
+.container, .contain, #add {
+    display: flex;
+    justify-content: space-around;
+    color: #80b3ff;;
+}
+.left, .right, table, #allrecipes {
+    background-color:  #80b3ff;
+    padding: 30px;
+}
+.left, .right, table, th, td, .white, #allrecipes {
+    color: #f2f2f2;
+    }
+.nav, .formlike {
+    display: flex;
+}
+.nav{
+    justify-content: space-between; 
+}
+.formlike{
+    justify-content: center;
+}
+.like {
+    background-color: #f2f2f2;
+    color: #80b3ff;
+    margin: 5px 0 0 10px;
+    border-radius: 20%;
+}
+.red {
+    color: red;
+}
+#border {
+    border: 4px solid #80b3ff;
+}
+#allrecipes {
+    text-align: center;
+}

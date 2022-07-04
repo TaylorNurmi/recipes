@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Recipes</title>
+</head>
+<body>
+    <div class="container" style="flex-direction: column;">
+        <div class="nav">
+            <h1>Welcome {{ session['chef_name'] }}</h1>
+            <div>
+                <a href="/newrecipes">Create</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div id="allrecipes">
+            <h1 style="border-bottom:3px solid #f2f2f2; ;">All Recipes</h1>
+            {% for recipe in recipes %}
+                <div class="formlike">
+                    <h3>{{recipe.name}}</h3>
+                    <form action="/like" method="post">
+                        <input type="hidden" value= {{ recipe.id }} name="id" >
+                        <input type="submit" value="Like" name="like" class= "like">
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

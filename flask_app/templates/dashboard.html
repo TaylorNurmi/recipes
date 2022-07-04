@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Recipes</title>
+</head>
+<body>
+    <div class="container" style="flex-direction: column;">
+        <div class="nav">
+            <h1>Welcome {{ session['chef_name'] }}</h1>
+            <div>
+                <a href="/allrecipes">All Recipes</a>
+                <a href="/newrecipes">Create</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div>
+            <p>These are your recipes</p>
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <th>Name</th>
+                    <th>Under 30 Minutes?</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {% for recipe in myrecipes.recipes %}
+                        {% if recipe.chef_id == session['chef_id'] %}
+                            <tr>
+                                <td>{{ recipe.name }}</td>
+                                <td>{{ recipe.cooking_time }}</td>
+                                <td><a href="/recipes/{{ recipe.id }}" class="white">view</a> <a href="/recipes/{{ recipe.id }}" class="white">instructions</a> <a href="/editrecipes/{{ recipe.id }}" class="white">edit</a> <a href="/delete/{{ recipe.id }}" class="white">delete</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p>These are recipes you love</p>
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <th>Name</th>
+                    <th>Under 30 Minutes?</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {% for recipe in favorite_recipes.favorites %}
+                        <tr>
+                            <td>{{ recipe.name }}</td>
+                            <td>{{ recipe.cooking_time }}</td>
+                            <td><a href="/recipes/{{ recipe.id }}" class="white">view</a> <a href="/recipes/{{ recipe.id }}" class="white">instructions</a> <a href="/deletelike/{{ recipe.id }}" class="white">delete</a></td></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
